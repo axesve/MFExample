@@ -1,6 +1,5 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request
 import requests, json
-from datetime import datetime
 from dateutil.parser import parse
 
 app = Flask(__name__)
@@ -10,6 +9,10 @@ def Index():
 
     _filter = ""
 
+    """
+    Gillar ändå att python inte har switch case, man kanske skulle flyttat sånt här till knapparna i htmlen, men med en sån här lösning så sparas variabeln om man vill gå till -
+    hela rapporten och sedan tillbaka till listan (se View)
+    """
     if request.method == 'POST':
         if request.form["Toggle"] == "All":
             _filter = ""
