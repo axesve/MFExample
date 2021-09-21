@@ -17,8 +17,14 @@ def Index():
             _filter = "type=ir"
         elif request.form["Toggle"] == "PR":
             _filter = "type=pr"
+        elif request.form["Toggle"] == "Regulatory":
+            _filter = "tag=:regulatory"
+        elif request.form["Toggle"] == "Interim report":
+            _filter = "tag=sub:report:interim"
+        elif request.form["Toggle"] == "Annual report":
+            _filter = "tag=sub:report:annual"
         elif request.form["Toggle"] == "Report archive":
-            _filter = "sub:report"
+            _filter = "tag=sub:report"
     
     req = requests.get("https://feed.mfn.se/v1/feed/3a920c14-5ffb-40b9-9ca5-889d038690f1.json?{}".format(_filter))
     news = req.json()["items"]
