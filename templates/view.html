@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="d-flex justify-content-center">
+    <div class="content">
+
+        <h1 class="header bold">{{view['content']['title']}}</h1>
+
+        <div class="view_content">{{content}}</div>
+
+        
+
+    </div>
+</div>
+<script>
+    $(".view_content").html($(".view_content").text());
+</script>
+
+{% endblock %}
+
