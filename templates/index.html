@@ -12,24 +12,32 @@
         <input class="btn btn-primary" type="submit" value="PR" name="Toggle" />
         <input class="btn btn-primary" type="submit" value="Interim report" name="Toggle" />
         <input class="btn btn-primary" type="submit" value="Annual report" name="Toggle" />
-
         <input class="btn btn-primary" type="submit" value="Regulatory" name="Toggle" />
         <input class="btn btn-primary" type="submit" value="Report archive" name="Toggle" />
     </form>
 
-    {% for new in news %}
-    <a class="press_anchor" href="/view?press={{new['news_id']}}">
-        
-        <div class="ir_container">
+    {% if viewing == "general" %}
+        {% for new in news %}
+        <a class="press_anchor" href="/view?press={{new['news_id']}}">
             
-            <div class="ir_date">{{new['content']['publish_date']}}</div>
-            <div class="ir_title">{{new['content']['title']}}</div>
-
-            <p class="ir_readmore bold">Read more</p>
-        </div>
-    </a>
-    {% endfor %}
-
+            <div class="ir_container">
+                <div class="ir_date">{{new['content']['publish_date']}}</div>
+                <div class="ir_title">{{new['content']['title']}}</div>
+                <p class="ir_readmore bold">Read more</p>
+            </div>
+        </a>
+        {% endfor %}
+    
+    {% else %}
+        {% for new in news %}
+        <a class="press_anchor" target="_blank" href="{{new['content']['attachments'][0]['url']}}">
+            <div class="ir_container">
+                <img id="pdf_icon" src="https://www.iconpacks.net/icons/2/free-pdf-icon-3375-thumb.png">
+                <div class="ir_title">{{new['content']['title']}}</div>
+            </div>
+        </a>
+        {% endfor %}
+    {%endif%}
     </div>
 
 </div>

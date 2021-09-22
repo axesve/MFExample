@@ -8,6 +8,7 @@ app = Flask(__name__)
 def Index():
 
     _filter = ""
+    viewing = "general"
 
     """
     Gillar ändå att python inte har switch case, man kanske skulle flyttat sånt här till knapparna i htmlen, men med en sån här lösning så sparas variabeln om man vill gå till -
@@ -28,6 +29,8 @@ def Index():
             _filter = "tag=sub:report:annual"
         elif request.form["Toggle"] == "Report archive":
             _filter = "tag=sub:report"
+            viewing = "reports"
+
     
     req = requests.get("https://feed.mfn.se/v1/feed/3a920c14-5ffb-40b9-9ca5-889d038690f1.json?{}".format(_filter))
     news = req.json()["items"]
@@ -36,7 +39,7 @@ def Index():
         format_time = parse(i["content"]["publish_date"]).replace(tzinfo=None)
         i["content"]["publish_date"] = format_time
 
-    return render_template('index.html', news=news)
+    return render_template('index.html', news=news, viewing=viewing)
 
 
 
