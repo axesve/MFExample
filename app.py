@@ -42,7 +42,6 @@ def Index():
     return render_template('index.html', news=news, viewing=viewing)
 
 
-
 @app.route("/view/", methods=['GET', 'POST'])
 def View():
     keyword = request.args.get('press')
