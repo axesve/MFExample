@@ -7,13 +7,13 @@
     <h1 class="bold">Press releases</h1>
 
     <form id="filter" method="post" action="/">
-        <input class="btn btn-primary" type="submit" value="All" name="Toggle">
-        <input class="btn btn-primary" type="submit" value="IR" name="Toggle" />
-        <input class="btn btn-primary" type="submit" value="PR" name="Toggle" />
-        <input class="btn btn-primary" type="submit" value="Interim report" name="Toggle" />
-        <input class="btn btn-primary" type="submit" value="Annual report" name="Toggle" />
-        <input class="btn btn-primary" type="submit" value="Regulatory" name="Toggle" />
-        <input class="btn btn-primary" type="submit" value="Report archive" name="Toggle" />
+        <input class="btn" type="submit" value="All" name="Toggle">
+        <input class="btn" type="submit" value="IR" name="Toggle" />
+        <input class="btn" type="submit" value="PR" name="Toggle" />
+        <input class="btn" type="submit" value="Interim report" name="Toggle" />
+        <input class="btn" type="submit" value="Annual report" name="Toggle" />
+        <input class="btn" type="submit" value="Regulatory" name="Toggle" />
+        <input class="btn" type="submit" value="Report archive" name="Toggle" />
     </form>
 
     {% if viewing == "general" %}
@@ -32,7 +32,7 @@
         {% for new in news %}
         <a class="press_anchor" target="_blank" href="{{new['content']['attachments'][0]['url']}}">
             <div class="ir_container">
-                <img id="pdf_icon" src="https://www.iconpacks.net/icons/2/free-pdf-icon-3375-thumb.png">
+                <img id="pdf_icon"src="{{url_for('static', filename='pdf.png')}}" align="middle" />
                 <div class="ir_title">{{new['content']['title']}}</div>
             </div>
         </a>
